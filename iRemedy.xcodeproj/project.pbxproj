@@ -14,6 +14,10 @@
 		A513002D22AC3D7B0024ED08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A513002B22AC3D7B0024ED08 /* LaunchScreen.storyboard */; };
 		A513003822AC3D7B0024ED08 /* iRemedyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513003722AC3D7B0024ED08 /* iRemedyTests.swift */; };
 		A513004322AC3D7B0024ED08 /* iRemedyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513004222AC3D7B0024ED08 /* iRemedyUITests.swift */; };
+		A5B122D222AD398600032424 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B122D122AD398600032424 /* HomeCollectionViewCell.swift */; };
+		A5B122D422AD76E900032424 /* AdicionarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B122D322AD76E900032424 /* AdicionarViewController.swift */; };
+		A5B122D622AD8AA800032424 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B122D522AD8AA800032424 /* Model.swift */; };
+		A5B122DC22AD8E2800032424 /* Remedio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B122DB22AD8E2800032424 /* Remedio.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		A513003E22AC3D7B0024ED08 /* iRemedyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iRemedyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A513004222AC3D7B0024ED08 /* iRemedyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iRemedyUITests.swift; sourceTree = "<group>"; };
 		A513004422AC3D7B0024ED08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5B122D122AD398600032424 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		A5B122D322AD76E900032424 /* AdicionarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarViewController.swift; sourceTree = "<group>"; };
+		A5B122D522AD8AA800032424 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		A5B122DB22AD8E2800032424 /* Remedio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remedio.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,10 @@
 				A513002922AC3D7B0024ED08 /* Assets.xcassets */,
 				A513002B22AC3D7B0024ED08 /* LaunchScreen.storyboard */,
 				A513002E22AC3D7B0024ED08 /* Info.plist */,
+				A5B122D122AD398600032424 /* HomeCollectionViewCell.swift */,
+				A5B122D322AD76E900032424 /* AdicionarViewController.swift */,
+				A5B122D522AD8AA800032424 /* Model.swift */,
+				A5B122DB22AD8E2800032424 /* Remedio.swift */,
 			);
 			path = iRemedy;
 			sourceTree = "<group>";
@@ -256,8 +268,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5B122D622AD8AA800032424 /* Model.swift in Sources */,
+				A5B122DC22AD8E2800032424 /* Remedio.swift in Sources */,
 				A513002522AC3D7A0024ED08 /* ViewController.swift in Sources */,
+				A5B122D422AD76E900032424 /* AdicionarViewController.swift in Sources */,
 				A513002322AC3D7A0024ED08 /* AppDelegate.swift in Sources */,
+				A5B122D222AD398600032424 /* HomeCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +449,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9395QT9948;
 				INFOPLIST_FILE = iRemedy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -450,6 +467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9395QT9948;
 				INFOPLIST_FILE = iRemedy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
