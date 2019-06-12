@@ -16,8 +16,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var quantidadeLabel: UILabel!
     
     @IBOutlet weak var horarioLabel: UILabel!
-    
-    @IBOutlet weak var tempoRestanteLabel: UILabel!
-    
+
 
 }

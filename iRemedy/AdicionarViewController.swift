@@ -46,6 +46,19 @@ class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate
         let durante = remedioDuranteTextField.text
         let contraindicacoes = remedioContraindicacoesTextField.text
         
+        if checkIfHasUso(dosagem: dosagem!, comprimidos: comprimidos!, horario: horario!, durante: durante!){
+            
+            print("entrou no if")
+            
+            let homeRemedio: HomeRemedio = HomeRemedio(nome: nome!, photo: image!, comprimidos: comprimidos!, dosagem: dosagem!, horario: horario!)
+            
+            
+            Model.instance.homeRemedios.append(homeRemedio);
+            
+            
+            print (Model.instance.homeRemedios)
+        }
+        
         remedio.nome = nome
         remedio.photo = image
         remedio.dosagem = dosagem
@@ -54,8 +67,8 @@ class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate
         remedio.durante = durante
         remedio.contraindicacao = contraindicacoes
         
-        Model.instance.remedios.append(remedio)
-        callHomeViewController()
+        Model.instance.allRemedios.append(remedio)
+        
         
     }
     
@@ -63,6 +76,17 @@ class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate
         let vc = storyboard?.instantiateViewController(withIdentifier: "homeViewController")
         present(vc!, animated: true)
         self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    private func checkIfHasUso(dosagem: String, comprimidos: String, horario: String, durante: String) -> Bool{
+        
+        print("entrou na funçaão")
+        
+        if !(dosagem.isEmpty && comprimidos.isEmpty && horario.isEmpty && durante.isEmpty){
+            return true
+            
+        }
+        return false
     }
 
     

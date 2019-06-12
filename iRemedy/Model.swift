@@ -14,6 +14,7 @@ class Model{
     
     public static var instance = Model()
     
-    public var remedios: [Remedio] = []
+    public var allRemedios: [Remedio] = []
     
+    public var homeRemedios: [HomeRemedio] = []
 }
