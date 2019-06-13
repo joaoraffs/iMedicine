@@ -19,6 +19,10 @@
 		A5B122D422AD76E900032424 /* AdicionarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B122D322AD76E900032424 /* AdicionarViewController.swift */; };
 		A5B122D622AD8AA800032424 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B122D522AD8AA800032424 /* Model.swift */; };
 		A5B122DC22AD8E2800032424 /* Remedio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B122DB22AD8E2800032424 /* Remedio.swift */; };
+		A5F359DE22B2942000DF4FAF /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5F359DC22B293EC00DF4FAF /* SF-Pro-Text-Regular.otf */; };
+		A5F359DF22B2942000DF4FAF /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5F359DD22B2940100DF4FAF /* SF-Pro-Text-Medium.otf */; };
+		A5F359E122B2B94D00DF4FAF /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F359E022B2B94D00DF4FAF /* TableViewCell.swift */; };
+		A5F359E322B2B99E00DF4FAF /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F359E222B2B99E00DF4FAF /* NameTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,10 @@
 		A5B122D322AD76E900032424 /* AdicionarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarViewController.swift; sourceTree = "<group>"; };
 		A5B122D522AD8AA800032424 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A5B122DB22AD8E2800032424 /* Remedio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remedio.swift; sourceTree = "<group>"; };
+		A5F359DC22B293EC00DF4FAF /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		A5F359DD22B2940100DF4FAF /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
+		A5F359E022B2B94D00DF4FAF /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		A5F359E222B2B99E00DF4FAF /* NameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +99,8 @@
 				A513003622AC3D7B0024ED08 /* iRemedyTests */,
 				A513004122AC3D7B0024ED08 /* iRemedyUITests */,
 				A513002022AC3D7A0024ED08 /* Products */,
+				A5F359DC22B293EC00DF4FAF /* SF-Pro-Text-Regular.otf */,
+				A5F359DD22B2940100DF4FAF /* SF-Pro-Text-Medium.otf */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +128,8 @@
 				A5B122D522AD8AA800032424 /* Model.swift */,
 				A5B122DB22AD8E2800032424 /* Remedio.swift */,
 				A51DC12722B1841700AF8A3B /* HomeRemedios.swift */,
+				A5F359E022B2B94D00DF4FAF /* TableViewCell.swift */,
+				A5F359E222B2B99E00DF4FAF /* NameTableViewCell.swift */,
 			);
 			path = iRemedy;
 			sourceTree = "<group>";
@@ -246,6 +258,8 @@
 			files = (
 				A513002D22AC3D7B0024ED08 /* LaunchScreen.storyboard in Resources */,
 				A513002A22AC3D7B0024ED08 /* Assets.xcassets in Resources */,
+				A5F359DE22B2942000DF4FAF /* SF-Pro-Text-Regular.otf in Resources */,
+				A5F359DF22B2942000DF4FAF /* SF-Pro-Text-Medium.otf in Resources */,
 				A513002822AC3D7A0024ED08 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,10 +286,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5B122D622AD8AA800032424 /* Model.swift in Sources */,
+				A5F359E122B2B94D00DF4FAF /* TableViewCell.swift in Sources */,
 				A51DC12822B1841700AF8A3B /* HomeRemedios.swift in Sources */,
 				A5B122DC22AD8E2800032424 /* Remedio.swift in Sources */,
 				A513002522AC3D7A0024ED08 /* ViewController.swift in Sources */,
 				A5B122D422AD76E900032424 /* AdicionarViewController.swift in Sources */,
+				A5F359E322B2B99E00DF4FAF /* NameTableViewCell.swift in Sources */,
 				A513002322AC3D7A0024ED08 /* AppDelegate.swift in Sources */,
 				A5B122D222AD398600032424 /* HomeCollectionViewCell.swift in Sources */,
 			);

@@ -17,4 +17,7 @@ class Model{
     public var allRemedios: [Remedio] = []
     
     public var homeRemedios: [HomeRemedio] = []
+    
+    public var userHasOpened: [Bool] = []
+    
 }

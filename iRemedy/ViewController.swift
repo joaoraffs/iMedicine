@@ -21,6 +21,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return Model.instance.homeRemedios.count
     }
     
+    @IBAction func adicionarRemedioButton(_ sender: Any) {
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -34,10 +36,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.nameLabel.text = remedio.nome
         cell.quantidadeLabel.text = remedio.comprimidos
         cell.remImageView.image = remedio.photo
-        
-        
-        
-        
         
         return cell
     }

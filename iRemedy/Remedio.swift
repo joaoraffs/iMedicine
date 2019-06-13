@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class Remedio{
+    
     internal init() {
         nome = nil
         photo = nil
