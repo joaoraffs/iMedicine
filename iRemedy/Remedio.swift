@@ -12,6 +12,7 @@ import UIKit
 class Remedio{
     
     internal init() {
+        
         nome = nil
         photo = nil
         dosagem = nil

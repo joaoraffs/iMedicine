@@ -18,6 +18,5 @@ class Model{
     
     public var homeRemedios: [HomeRemedio] = []
     
-    public var userHasOpened: [Bool] = []
     
 }
