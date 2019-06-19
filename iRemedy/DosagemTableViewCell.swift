@@ -14,7 +14,9 @@ class DosagemTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
     @IBOutlet weak var pickerView: UIPickerView!
     
     let medidasOptions: [String] = ["mg", "g", "µg"]
-    var medidaEscolhida: String = ""
+    static var medidaEscolhida: String = ""
+    static var dosagemEscolhida: String = ""
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -28,11 +30,11 @@ class DosagemTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        medidaEscolhida = medidasOptions[row]
+        DosagemTableViewCell.medidaEscolhida = medidasOptions[row]
     }
     
     public func getMedidaEscolhida() -> String{
-        return medidaEscolhida
+        return DosagemTableViewCell.medidaEscolhida
     }
     
     public func getDosagemEscolhida() -> String{
@@ -43,6 +45,11 @@ class DosagemTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
         return ""
     }
     
+    @IBAction func dosagemEscolhida(_ sender: Any) {
+        if let dosagem = dosagemTextField.text{
+            DosagemTableViewCell.dosagemEscolhida = dosagem
+        }
+    }
     
     
     override func awakeFromNib() {
