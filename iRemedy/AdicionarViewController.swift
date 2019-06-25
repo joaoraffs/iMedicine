@@ -7,14 +7,48 @@
 //
 
 import UIKit
+import UserNotifications
 
-class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource {
+class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource{
+    
+    var appDelegate = UIApplication.shared.delegate as? AppDelegate
+    
+    override func viewDidLoad(){
+        super.viewDidLoad()
+        tableView.transform = CGAffineTransform(rotationAngle: (-.pi))
+        //        adicionarRemedioButton.delegate = self
+        //        adicionarRemedioButton.dataSource = self
+        cellIsOpened.append(true)
+        for _ in 0...4{
+            cellIsOpened.append(false)
+        }
+    }
+    var cell0: NameTableViewCell = NameTableViewCell()
+    var cell1: DosagemTableViewCell = DosagemTableViewCell()
+    var cell2: PeriodoTableViewCell = PeriodoTableViewCell()
+    var cell3: SobreACompraTableViewCell = SobreACompraTableViewCell()
+    var cell4: ObservacoesTableViewCell = ObservacoesTableViewCell()
     
     var nameTextField = UITextField()
     var cellIsOpened: [Bool] = []
+    
+    var keyboardIsShown: Bool = false
+    
     var medidaValue: String = "mg"
     var dosagemValue: String = ""
+    var comprimidosValue: Int = 0
+    var frequenciaValue: Date = Date()
+    var horarioValue: Date = Date()
+    var dataDeValidadeValue: Date = Date()
+    var precoValue: String = ""
+    var sintomasValue: String = ""
+    var contraindicacaoValue: String = ""
+    
+    var userSettedPhoto: Bool = false
     var photoButton: UIButton = UIButton.init()
+    
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if cellIsOpened[section] == true && section != 0{
@@ -29,17 +63,78 @@ class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate
     }
 
     @IBAction func adicionarRemedioButton(_ sender: Any) {
-//        var remedio: Remedio = Remedio();
-//
+        let remedio: Remedio = Remedio();
+
+        var isHomeRemedio: Bool = false
+        nameTextField.text = "kkk"
 //        if let name = nameTextField.text{
-//            remedio.nome = name
-//        }
-//        remedio.photo = cameraButton.imageView?.image
-//        if cellIsOpened[1] == true{
-//            remedio.dosagem ==
+            remedio.nome = nameTextField.text
+            let indexPath: IndexPath = IndexPath(row: 0, section: 0)
+            if userSettedPhoto == true{
+                let cell = cell0
+                remedio.photo = cell.cameraButton.imageView?.image
+            }else{
+                remedio.photo = nil
+            }
+            
 //        }
         
+        
+        if cellIsOpened[1] == true{
+            let indexPath: IndexPath = IndexPath(row: 0, section: 1)
+            let cell = cell1
+            
+            if let dosagem = cell.dosagemTextField.text{
+                dosagemValue =  dosagem
+                
+            }
+
+            remedio.dosagem = dosagemValue
+            remedio.comprimidos = String(cell.comprimidosStepper.value)
+            remedio.medida = cell.getMedidaEscolhida()
+            
+            isHomeRemedio = true
+        }
+        
+        if cellIsOpened[2] == true{
+            let indexPath: IndexPath = IndexPath(row: 0, section: 2)
+            let cell = cell2
+            
+            remedio.frequencia = cell.getFrequenciaSelected()
+            remedio.horario = cell.getHorarioSelected()
+            
+            cell.periodoToString()
+            
+            if isHomeRemedio == true{
+                let homeRemedio = HomeRemedio(nome: remedio.nome, photo: remedio.photo, comprimidos: remedio.comprimidos, dosagem: remedio.dosagem, horario: remedio.horario, frequencia: remedio.frequencia)
+
+                print(homeRemedio.dateToSeconds(date: remedio.frequencia!))
+                Model.instance.homeRemedios.append(homeRemedio)
+                setNotifications(remedio: homeRemedio)
+            }
+        }
+                if cellIsOpened[3] == true{
+            let indexPath: IndexPath = IndexPath(row: 0, section: 3)
+            let cell = cell3
+            
+            remedio.dataDeValidade = cell.getDataDeValidadeSelected()
+            remedio.preco = cell.precoTextField.text
+        }
+        
+        if cellIsOpened[4] == true{
+            let indexPath: IndexPath = IndexPath(row: 0, section: 4)
+             let cell = cell4
+            
+            remedio.sintomas = cell.sintomasTextField.text
+            remedio.contraindicacao = cell.contraindicacaoTextField.text
+        }
+        Model.instance.allRemedios.append(remedio)
     }
+    
+    private func callFillDetails(){
+        print("fill all the details at the cell")
+    }
+    
     @IBAction func cameraButton(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let imagePicker = UIImagePickerController()
@@ -56,28 +151,39 @@ class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate
             cell.transform = CGAffineTransform(rotationAngle: (-.pi))
             
             photoButton = cell.cameraButton
+            
+            cell0 = cell
             return cell
         }
+        
         if cellIsOpened[indexPath.section] == true{
             if indexPath.row == 0{
                 if  indexPath.section == 1 && indexPath.row == 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "DosagemTableViewCell", for: indexPath) as! DosagemTableViewCell
                     cell.transform = CGAffineTransform(rotationAngle: (-.pi))
+                    
+                    cell1 = cell
                     return cell
                 }
                 if   indexPath.section == 2 && indexPath.row == 0{
                     let cell = tableView.dequeueReusableCell(withIdentifier: "PeriodoTableViewCell", for: indexPath) as! PeriodoTableViewCell
                     cell.transform = CGAffineTransform(rotationAngle: (-.pi))
+                    
+                    cell2 = cell
                     return cell
                 }
                 if  indexPath.section == 3 && indexPath.row == 0{
                     let cell = tableView.dequeueReusableCell(withIdentifier: "SobreACompraTableViewCell", for: indexPath) as! SobreACompraTableViewCell
                     cell.transform = CGAffineTransform(rotationAngle: (-.pi))
+                    
+                    cell3 = cell
                     return cell
                 }
                 if  indexPath.section == 4 && indexPath.row == 0{
                     let cell = tableView.dequeueReusableCell(withIdentifier: "ObservacoesTableViewCell", for: indexPath) as! ObservacoesTableViewCell
                     cell.transform = CGAffineTransform(rotationAngle: (-.pi))
+                    
+                    cell4 = cell
                     return cell
                 }
             }
@@ -124,10 +230,16 @@ class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        cellIsOpened[indexPath.section] = !cellIsOpened[indexPath.section]
-        let section = IndexSet.init(integer: indexPath.section)
-        tableView.reloadSections(section, with: .none)
-        
+        if keyboardIsShown {
+            view.endEditing(true)
+            keyboardIsShown = false
+            return
+        }
+        if indexPath.section != 0{
+            cellIsOpened[indexPath.section] = !cellIsOpened[indexPath.section]
+            let section = IndexSet.init(integer: indexPath.section)
+            tableView.reloadSections(section, with: .none)
+        }
     }
 
     @IBOutlet weak var tableView: UITableView!
@@ -135,6 +247,7 @@ class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         photoButton.setImage(image, for: .normal)
+        userSettedPhoto = true
         dismiss(animated:true, completion: nil)
     }
     
@@ -152,13 +265,62 @@ class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate
         return false
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.transform = CGAffineTransform(rotationAngle: (-.pi))
-        cellIsOpened.append(true)
-        for _ in 0...4{
-            cellIsOpened.append(false)
+//    override func viewDidLoad(){
+//        super.viewDidLoad()
+//        tableView.transform = CGAffineTransform(rotationAngle: (-.pi))
+////        adicionarRemedioButton.delegate = self
+////        adicionarRemedioButton.dataSource = self
+//        cellIsOpened.append(true)
+//        for _ in 0...4{
+//            cellIsOpened.append(false)
+//        }
+////
+////
+////
+////        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+////        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+////        tap.cancelsTouchesInView = false
+////        self.view.addGestureRecognizer(tap)
+//    }
+//
+//
+    func setNotifications(remedio: HomeRemedio){
+        
+        self.appDelegate?.scheduleNotification(remedio: remedio)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+    }
+    
+    @objc func keyboardWillAppear(notification: NSNotification) {
+        //Do something here
+        
+        guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
+            return
         }
+        
+        keyboardIsShown = true
+        bottomConstraint.constant = keyboardRect.height + 45
+        view.layoutIfNeeded()
+        print(keyboardIsShown)
+    }
+    
+    @objc func keyboardWillDisappear() {
+        //Do something here
+        keyboardIsShown = false
+        bottomConstraint.constant = 45
+        view.layoutIfNeeded()
+        print(keyboardIsShown)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

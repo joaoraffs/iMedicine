@@ -12,10 +12,13 @@ class DosagemTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
 
     @IBOutlet weak var dosagemTextField: UITextField!
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var comprimidosStepper: UIStepper!
+    @IBOutlet weak var numeroDeComprimidosLabel: UILabel!
     
     let medidasOptions: [String] = ["mg", "g", "µg"]
-    static var medidaEscolhida: String = ""
-    static var dosagemEscolhida: String = ""
+    static var medidasSelected: String = ""
+    static var dosagemSelected: String = ""
+    static var comprimidosSelected: Int = 0
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -30,31 +33,25 @@ class DosagemTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        DosagemTableViewCell.medidaEscolhida = medidasOptions[row]
+        DosagemTableViewCell.medidasSelected = medidasOptions[row]
     }
     
     public func getMedidaEscolhida() -> String{
-        return DosagemTableViewCell.medidaEscolhida
+        return DosagemTableViewCell.medidasSelected
     }
-    
-    public func getDosagemEscolhida() -> String{
-        
-        if let dosagemEscolhida = dosagemTextField.text{
-            return dosagemEscolhida
-        }
-        return ""
-    }
-    
-    @IBAction func dosagemEscolhida(_ sender: Any) {
+
+    @IBAction func dosagemTextField(_ sender: Any) {
+        print("entrou no dosagem")
         if let dosagem = dosagemTextField.text{
-            DosagemTableViewCell.dosagemEscolhida = dosagem
+            DosagemTableViewCell.dosagemSelected = dosagem
         }
     }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        
         pickerView.delegate = self
         pickerView.dataSource = self
     }
@@ -63,6 +60,10 @@ class DosagemTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
         super.setSelected(selected, animated: animated)
     }
     
+    @IBAction func stepperPressed(_ sender: Any) {
+        DosagemTableViewCell.comprimidosSelected = Int(comprimidosStepper.value)
+        numeroDeComprimidosLabel.text = String(DosagemTableViewCell.comprimidosSelected)
+    }
     
     
 

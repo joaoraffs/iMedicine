@@ -10,8 +10,8 @@ import UIKit
 
 class SobreACompraTableViewCell: UITableViewCell {
 
-    static var dataDeValidadeSelected: Date = Date()
-    static var precoSelected: String = ""
+    private var dataDeValidadeSelected: Date = Date()
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,16 +26,23 @@ class SobreACompraTableViewCell: UITableViewCell {
     
     @IBOutlet weak var dataDeValidadeDatePicker: UIDatePicker!
     @IBAction func dataDeValidadeDatePicker(_ sender: Any) {
-        SobreACompraTableViewCell.dataDeValidadeSelected = dataDeValidadeDatePicker.date
+        dataDeValidadeSelected = dataDeValidadeDatePicker.date
     }
     
     @IBOutlet weak var precoTextField: UITextField!
     @IBAction func precoTextField(_ sender: Any) {
-        if let chosenText = precoTextField.text{
-            
-            SobreACompraTableViewCell.precoSelected = chosenText
-        }
+
     }
     
+    public func getDataDeValidadeSelected() -> Date{
+        return dataDeValidadeSelected
+    }
+    
+    public func getPrecoSelected() -> String{
+        if let preco = precoTextField.text{
+            return preco
+        }
+        return ""
+    }
     
 }

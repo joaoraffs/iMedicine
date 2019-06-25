@@ -11,12 +11,11 @@ import UIKit
 class ObservacoesTableViewCell: UITableViewCell {
 
     
-    static var sintomasSelected: String = ""
-    static var contraindicacaoSelected: String = ""
+    private var sintomasSelected: String = ""
+    private var contraindicacaoSelected: String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,17 +26,29 @@ class ObservacoesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var sintomasTextField: UITextField!
     @IBOutlet weak var contraindicacaoTextField: UITextField!
-    
+
     @IBAction func contraindicacaoTextField(_ sender: Any) {
+        print("entrou no contra")
         if let chosenText = contraindicacaoTextField.text{
-            ObservacoesTableViewCell.contraindicacaoSelected = chosenText
+            contraindicacaoSelected = chosenText
+        }else{
+            contraindicacaoSelected = ""
+        }
+    }
+    @IBAction func sintomasTextField(_ sender: Any) {
+        print("entrou no sint")
+        if let chosenText = sintomasTextField.text{
+            sintomasSelected = chosenText
+        }else{
+            sintomasSelected = ""
         }
     }
     
-    @IBAction func sintomasTextField(_ sender: Any) {
-        if let chosenText = sintomasTextField.text{
-            ObservacoesTableViewCell.sintomasSelected = chosenText
-        }
+    public func getSintomasSelected() -> String{
+        return sintomasSelected
+    }
+    public func getContraindicacoesSelected() -> String{
+        return contraindicacaoSelected
     }
     
 
