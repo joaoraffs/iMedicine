@@ -295,7 +295,7 @@
                                         <rect key="frame" x="0.0" y="732.5" width="414" height="123"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dmf-CE-92M" id="uMG-iO-z6a">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="122.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="123"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Horario" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAd-x6-pds">
@@ -366,7 +366,7 @@
                                         <rect key="frame" x="0.0" y="855.5" width="414" height="29"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8TK-Mo-PJl" id="4tg-0S-m9H">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="28.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="29"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data de validade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osp-8D-6F4">
@@ -452,21 +452,133 @@
             </objects>
             <point key="canvasLocation" x="3884.057971014493" y="114.50892857142857"/>
         </scene>
-        <!--Caixa de Remédios-->
+        <!-- Caixa de Remédios-->
         <scene sceneID="hfk-iR-R9u">
             <objects>
-                <viewController id="Evq-WE-7pD" sceneMemberID="viewController">
+                <viewController id="Evq-WE-7pD" customClass="CaixaDeRemediosViewController" customModule="iRemedy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="bottom" id="PUk-97-7nK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t2m-cb-mAC">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" red="0.92156862750000001" green="0.7843137255" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RemedioTableViewCell" rowHeight="393" id="y5z-Wn-Ib9" customClass="RemedioTableViewCell" customModule="iRemedy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="393"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y5z-Wn-Ib9" id="hHB-cd-N01">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="392.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dnlove" translatesAutoresizingMaskIntoConstraints="NO" id="mQ4-fr-hGk">
+                                                    <rect key="frame" x="20" y="20" width="161" height="161"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="161" id="ArQ-nW-lZZ"/>
+                                                        <constraint firstAttribute="width" constant="161" id="ThS-rJ-Jyx"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOME" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTI-To-C4A">
+                                                    <rect key="frame" x="203" y="20" width="191" height="24"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dosagem  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inM-lX-qfD">
+                                                    <rect key="frame" x="203" y="120" width="75.5" height="18"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data de validade:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7J-gp-qQL">
+                                                    <rect key="frame" x="203" y="141" width="122.5" height="18"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preço pago:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ig-Do-LCF">
+                                                    <rect key="frame" x="203" y="162" width="85" height="18"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contraindicações:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6Z-ZQ-thX">
+                                                    <rect key="frame" x="21" y="199" width="373" height="20.5"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Não se automedique! Só tome remédios quando indicados por um profissional da saúde!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YqV-QS-wVB">
+                                                    <rect key="frame" x="20" y="318.5" width="374" height="64.5"/>
+                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="18"/>
+                                                    <color key="textColor" red="1" green="0.1418582867" blue="0.075640107710000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sintomas:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7B0-2V-NS4">
+                                                    <rect key="frame" x="21" y="254.5" width="76" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kTI-To-C4A" firstAttribute="leading" secondItem="mQ4-fr-hGk" secondAttribute="trailing" constant="22" id="6mW-gO-XY7"/>
+                                                <constraint firstAttribute="trailing" secondItem="t6Z-ZQ-thX" secondAttribute="trailing" constant="20" id="Aak-BJ-BGX"/>
+                                                <constraint firstItem="t6Z-ZQ-thX" firstAttribute="leading" secondItem="mQ4-fr-hGk" secondAttribute="leading" constant="1" id="Cc9-0A-BPt"/>
+                                                <constraint firstItem="8Ig-Do-LCF" firstAttribute="leading" secondItem="x7J-gp-qQL" secondAttribute="leading" id="D2Y-mJ-Dxb"/>
+                                                <constraint firstItem="kTI-To-C4A" firstAttribute="top" secondItem="mQ4-fr-hGk" secondAttribute="top" id="Ghc-LH-meV"/>
+                                                <constraint firstItem="YqV-QS-wVB" firstAttribute="leading" secondItem="hHB-cd-N01" secondAttribute="leading" constant="20" id="GkX-LZ-uyJ"/>
+                                                <constraint firstItem="mQ4-fr-hGk" firstAttribute="leading" secondItem="hHB-cd-N01" secondAttribute="leading" constant="20" id="GuM-gI-bje"/>
+                                                <constraint firstItem="7B0-2V-NS4" firstAttribute="top" secondItem="t6Z-ZQ-thX" secondAttribute="bottom" constant="35" id="M2w-qv-zte"/>
+                                                <constraint firstItem="mQ4-fr-hGk" firstAttribute="top" secondItem="hHB-cd-N01" secondAttribute="top" constant="20" id="MoX-G7-3ns"/>
+                                                <constraint firstItem="7B0-2V-NS4" firstAttribute="leading" secondItem="t6Z-ZQ-thX" secondAttribute="leading" id="Nk6-e9-WtH"/>
+                                                <constraint firstItem="inM-lX-qfD" firstAttribute="leading" secondItem="kTI-To-C4A" secondAttribute="leading" id="OKy-Q9-Ymf"/>
+                                                <constraint firstItem="8Ig-Do-LCF" firstAttribute="top" secondItem="x7J-gp-qQL" secondAttribute="bottom" constant="3" id="QMO-fv-8t6"/>
+                                                <constraint firstItem="x7J-gp-qQL" firstAttribute="top" secondItem="kTI-To-C4A" secondAttribute="bottom" constant="97" id="W4j-p2-UXr"/>
+                                                <constraint firstAttribute="trailing" secondItem="YqV-QS-wVB" secondAttribute="trailing" constant="20" id="Xhs-7s-zyI"/>
+                                                <constraint firstAttribute="bottom" secondItem="inM-lX-qfD" secondAttribute="bottom" constant="255" id="cqD-5V-bZv"/>
+                                                <constraint firstAttribute="trailing" secondItem="kTI-To-C4A" secondAttribute="trailing" constant="20" id="gYJ-aK-F3u"/>
+                                                <constraint firstAttribute="bottom" secondItem="YqV-QS-wVB" secondAttribute="bottom" constant="10" id="svI-eX-WUS"/>
+                                                <constraint firstItem="t6Z-ZQ-thX" firstAttribute="top" secondItem="mQ4-fr-hGk" secondAttribute="bottom" constant="18" id="yUp-lq-gnS"/>
+                                                <constraint firstItem="x7J-gp-qQL" firstAttribute="leading" secondItem="inM-lX-qfD" secondAttribute="leading" id="yl7-2x-X95"/>
+                                                <constraint firstItem="x7J-gp-qQL" firstAttribute="top" secondItem="inM-lX-qfD" secondAttribute="bottom" constant="3" id="z8C-FP-wV9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contraindicacoesLabel" destination="t6Z-ZQ-thX" id="C31-9q-yN5"/>
+                                            <outlet property="dataDeValidadeLabel" destination="x7J-gp-qQL" id="L0T-hT-7iK"/>
+                                            <outlet property="dosagemLabel" destination="inM-lX-qfD" id="jo7-4f-bOx"/>
+                                            <outlet property="nomeDoRemedioLabel" destination="kTI-To-C4A" id="N2A-cP-unf"/>
+                                            <outlet property="photoImageView" destination="mQ4-fr-hGk" id="yIt-uB-WL2"/>
+                                            <outlet property="precoPagoLabel" destination="8Ig-Do-LCF" id="lp3-5J-f7M"/>
+                                            <outlet property="sintomasLabel" destination="7B0-2V-NS4" id="Hyw-81-qYx"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Evq-WE-7pD" id="UhF-Tw-ymC"/>
+                                    <outlet property="delegate" destination="Evq-WE-7pD" id="Orb-R5-uhn"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="t2m-cb-mAC" firstAttribute="top" secondItem="AkV-5d-0yZ" secondAttribute="top" id="4Va-vp-vh8"/>
+                            <constraint firstItem="t2m-cb-mAC" firstAttribute="trailing" secondItem="AkV-5d-0yZ" secondAttribute="trailing" id="4af-RV-5gw"/>
+                            <constraint firstItem="t2m-cb-mAC" firstAttribute="bottom" secondItem="AkV-5d-0yZ" secondAttribute="bottom" id="TDd-yb-mjb"/>
+                            <constraint firstItem="t2m-cb-mAC" firstAttribute="leading" secondItem="AkV-5d-0yZ" secondAttribute="leading" id="iZ2-YN-D8z"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="AkV-5d-0yZ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Caixa de Remédios" image="Group 38" selectedImage="Group 38" id="ypp-hd-mSY"/>
+                    <navigationItem key="navigationItem" title=" Caixa de Remédios" id="zSf-UO-jwG"/>
+                    <connections>
+                        <outlet property="tableView" destination="t2m-cb-mAC" id="A79-Jw-H24"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NwA-eR-bxw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2974" y="837"/>
+            <point key="canvasLocation" x="3884.057971014493" y="836.38392857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="irH-uR-W1G">
@@ -481,9 +593,9 @@
                         <color key="selectedImageTintColor" red="0.26666666666666666" green="0.36470588235294116" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
-                        <segue destination="W1W-Vc-3fR" kind="relationship" relationship="viewControllers" id="KZ5-ds-dfL"/>
                         <segue destination="bZi-Nv-ATl" kind="relationship" relationship="viewControllers" id="GRa-bb-exP"/>
-                        <segue destination="Evq-WE-7pD" kind="relationship" relationship="viewControllers" id="THy-1h-Sal"/>
+                        <segue destination="W1W-Vc-3fR" kind="relationship" relationship="viewControllers" id="KZ5-ds-dfL"/>
+                        <segue destination="vXi-XF-a6S" kind="relationship" relationship="viewControllers" id="THy-1h-Sal"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="de7-lg-qiJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -543,7 +655,7 @@
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle Copy 5" translatesAutoresizingMaskIntoConstraints="NO" id="Pjm-V1-gOV" userLabel="retangulo view">
                                                             <rect key="frame" x="2" y="2" width="370" height="157"/>
                                                         </imageView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 38" translatesAutoresizingMaskIntoConstraints="NO" id="0Dj-dm-Pxz" userLabel="Foto do remédio">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dnlove" translatesAutoresizingMaskIntoConstraints="NO" id="0Dj-dm-Pxz" userLabel="Foto do remédio">
                                                             <rect key="frame" x="40" y="30" width="74" height="86.5"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0T-U8-Lvd" userLabel="Nome do remédio">
@@ -684,6 +796,25 @@
             </objects>
             <point key="canvasLocation" x="2973.913043478261" y="114.50892857142857"/>
         </scene>
+        <!--Caixa de Remédios-->
+        <scene sceneID="CLJ-Au-Pyz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vXi-XF-a6S" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Caixa de Remédios" image="Group 38" selectedImage="Group 38" id="ypp-hd-mSY"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="pZ1-Aa-oEh">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Evq-WE-7pD" kind="relationship" relationship="rootViewController" id="CsB-3v-Ie5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K8Q-NK-CwY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2973.913043478261" y="836.38392857142856"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Group 38" width="55" height="35"/>
@@ -692,6 +823,7 @@
         <image name="Rectangle Copy 6" width="414" height="85"/>
         <image name="adicionarButton" width="283" height="59"/>
         <image name="camera icone k" width="76" height="74"/>
+        <image name="dnlove" width="1024" height="1024"/>
         <image name="expansible0" width="420" height="80"/>
         <image name="iMedicine" width="151" height="27"/>
         <image name="mais" width="35" height="35"/>

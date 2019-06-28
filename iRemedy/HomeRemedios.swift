@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 class HomeRemedio{
+    var appDelegate = UIApplication.shared.delegate as? AppDelegate
     
     internal init(nome: String?, photo: UIImage?, comprimidos: String?, dosagem: String?, horario: Date?, frequencia: Date?) {
         
@@ -68,6 +69,8 @@ class HomeRemedio{
         return asInt
     }
     
+
+    
     private func hoursToSeconds(date: Date) -> Int{
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date / server String
@@ -86,4 +89,23 @@ class HomeRemedio{
         return asInt
     }
     
+    public func setHomeRemedio(){
+        Model.instance.homeRemedios.append(self)
+        setNotifications(remedio: self)
+    }
+    
+    private func setNotifications(remedio: HomeRemedio){
+        
+        var notificationDate: Date = remedio.horario!
+        let notificationFrequencia: Double = Double(remedio.dateToSeconds(date: remedio.frequencia!))
+        
+        let iterations: Int = Int((24*60*60)/Double(notificationFrequencia))
+        
+        for i in 0...iterations{
+            if i < 10{
+                self.appDelegate?.scheduleNotification(remedio: remedio, notificationDate: notificationDate, iteration: i)
+                notificationDate = Date(timeInterval: notificationFrequencia, since: notificationDate)
+            }
+        }
+    }
 }

@@ -19,6 +19,8 @@
 		A513003822AC3D7B0024ED08 /* iRemedyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513003722AC3D7B0024ED08 /* iRemedyTests.swift */; };
 		A513004322AC3D7B0024ED08 /* iRemedyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513004222AC3D7B0024ED08 /* iRemedyUITests.swift */; };
 		A51DC12822B1841700AF8A3B /* HomeRemedios.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51DC12722B1841700AF8A3B /* HomeRemedios.swift */; };
+		A523BEBE22C4E30E0027C44D /* CaixaDeRemediosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BEBD22C4E30E0027C44D /* CaixaDeRemediosViewController.swift */; };
+		A523BEC022C4E3C30027C44D /* RemedioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BEBF22C4E3C30027C44D /* RemedioTableViewCell.swift */; };
 		A5B122D222AD398600032424 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B122D122AD398600032424 /* HomeCollectionViewCell.swift */; };
 		A5B122D422AD76E900032424 /* AdicionarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B122D322AD76E900032424 /* AdicionarViewController.swift */; };
 		A5B122D622AD8AA800032424 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B122D522AD8AA800032424 /* Model.swift */; };
@@ -65,6 +67,9 @@
 		A513004222AC3D7B0024ED08 /* iRemedyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iRemedyUITests.swift; sourceTree = "<group>"; };
 		A513004422AC3D7B0024ED08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A51DC12722B1841700AF8A3B /* HomeRemedios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRemedios.swift; sourceTree = "<group>"; };
+		A523BEBD22C4E30E0027C44D /* CaixaDeRemediosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaixaDeRemediosViewController.swift; sourceTree = "<group>"; };
+		A523BEBF22C4E3C30027C44D /* RemedioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemedioTableViewCell.swift; sourceTree = "<group>"; };
+		A523BEC122C5077B0027C44D /* iRemedy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iRemedy.entitlements; sourceTree = "<group>"; };
 		A5B122D122AD398600032424 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5B122D322AD76E900032424 /* AdicionarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarViewController.swift; sourceTree = "<group>"; };
 		A5B122D522AD8AA800032424 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -125,6 +130,7 @@
 		A513002122AC3D7A0024ED08 /* iRemedy */ = {
 			isa = PBXGroup;
 			children = (
+				A523BEC122C5077B0027C44D /* iRemedy.entitlements */,
 				A513002222AC3D7A0024ED08 /* AppDelegate.swift */,
 				A513002422AC3D7A0024ED08 /* ViewController.swift */,
 				A513002622AC3D7A0024ED08 /* Main.storyboard */,
@@ -142,6 +148,8 @@
 				A5127AAE22B8030E00AB71E3 /* PeriodoTableViewCell.swift */,
 				A5127AB022B8032300AB71E3 /* SobreACompraTableViewCell.swift */,
 				A5127AB222B8033B00AB71E3 /* ObservacoesTableViewCell.swift */,
+				A523BEBD22C4E30E0027C44D /* CaixaDeRemediosViewController.swift */,
+				A523BEBF22C4E3C30027C44D /* RemedioTableViewCell.swift */,
 			);
 			path = iRemedy;
 			sourceTree = "<group>";
@@ -232,6 +240,11 @@
 				TargetAttributes = {
 					A513001E22AC3D7A0024ED08 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					A513003222AC3D7B0024ED08 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -297,8 +310,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A523BEBE22C4E30E0027C44D /* CaixaDeRemediosViewController.swift in Sources */,
 				A5B122D622AD8AA800032424 /* Model.swift in Sources */,
 				A5F359E122B2B94D00DF4FAF /* TableViewCell.swift in Sources */,
+				A523BEC022C4E3C30027C44D /* RemedioTableViewCell.swift in Sources */,
 				A51DC12822B1841700AF8A3B /* HomeRemedios.swift in Sources */,
 				A5127AB122B8032300AB71E3 /* SobreACompraTableViewCell.swift in Sources */,
 				A5B122DC22AD8E2800032424 /* Remedio.swift in Sources */,
@@ -484,6 +499,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iRemedy/iRemedy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9395QT9948;
 				INFOPLIST_FILE = iRemedy/Info.plist;
@@ -502,6 +518,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iRemedy/iRemedy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9395QT9948;
 				INFOPLIST_FILE = iRemedy/Info.plist;

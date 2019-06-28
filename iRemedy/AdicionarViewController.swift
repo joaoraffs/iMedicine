@@ -13,16 +13,7 @@ class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate
     
     var appDelegate = UIApplication.shared.delegate as? AppDelegate
     
-    override func viewDidLoad(){
-        super.viewDidLoad()
-        tableView.transform = CGAffineTransform(rotationAngle: (-.pi))
-        //        adicionarRemedioButton.delegate = self
-        //        adicionarRemedioButton.dataSource = self
-        cellIsOpened.append(true)
-        for _ in 0...4{
-            cellIsOpened.append(false)
-        }
-    }
+ 
     var cell0: NameTableViewCell = NameTableViewCell()
     var cell1: DosagemTableViewCell = DosagemTableViewCell()
     var cell2: PeriodoTableViewCell = PeriodoTableViewCell()
@@ -57,82 +48,62 @@ class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate
             return 1;
         }
     }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 5
     }
-
     @IBAction func adicionarRemedioButton(_ sender: Any) {
-        let remedio: Remedio = Remedio();
-
-        var isHomeRemedio: Bool = false
-        nameTextField.text = "kkk"
-//        if let name = nameTextField.text{
-            remedio.nome = nameTextField.text
-            let indexPath: IndexPath = IndexPath(row: 0, section: 0)
+        let remedio: Remedio = Remedio()
+        if let nome = cell0.nameTextField.text{
+            remedio.nome = nome
             if userSettedPhoto == true{
                 let cell = cell0
                 remedio.photo = cell.cameraButton.imageView?.image
+                remedio.hasPhoto = true
             }else{
                 remedio.photo = nil
             }
-            
-//        }
-        
-        
-        if cellIsOpened[1] == true{
-            let indexPath: IndexPath = IndexPath(row: 0, section: 1)
-            let cell = cell1
-            
-            if let dosagem = cell.dosagemTextField.text{
-                dosagemValue =  dosagem
-                
+            if cellIsOpened[1] == true{
+                let cell = cell1
+                if let dosagem = cell.dosagemTextField.text{
+                    dosagemValue =  dosagem
+                }
+                remedio.dosagem = dosagemValue
+                remedio.comprimidos = String(cell.comprimidosStepper.value)
+                remedio.medida = cell.getMedidaEscolhida()
             }
-
-            remedio.dosagem = dosagemValue
-            remedio.comprimidos = String(cell.comprimidosStepper.value)
-            remedio.medida = cell.getMedidaEscolhida()
-            
-            isHomeRemedio = true
-        }
-        
-        if cellIsOpened[2] == true{
-            let indexPath: IndexPath = IndexPath(row: 0, section: 2)
-            let cell = cell2
-            
-            remedio.frequencia = cell.getFrequenciaSelected()
-            remedio.horario = cell.getHorarioSelected()
-            
-            cell.periodoToString()
-            
-            if isHomeRemedio == true{
+            if cellIsOpened[2] == true{
+                let cell = cell2
+                
+                remedio.frequencia = cell.getFrequenciaSelected()
+                remedio.horario = cell.getHorarioSelected()
+                
+                cell.periodoToString()
+                
                 let homeRemedio = HomeRemedio(nome: remedio.nome, photo: remedio.photo, comprimidos: remedio.comprimidos, dosagem: remedio.dosagem, horario: remedio.horario, frequencia: remedio.frequencia)
 
                 print(homeRemedio.dateToSeconds(date: remedio.frequencia!))
-                Model.instance.homeRemedios.append(homeRemedio)
-                setNotifications(remedio: homeRemedio)
+                
+                homeRemedio.setHomeRemedio()
+                Model.instance.savesHomeRemedioData()
             }
-        }
-                if cellIsOpened[3] == true{
-            let indexPath: IndexPath = IndexPath(row: 0, section: 3)
-            let cell = cell3
+            if cellIsOpened[3] == true{
+                let cell = cell3
+                remedio.dataDeValidade = cell.getDataDeValidadeSelected()
+                remedio.preco = cell.precoTextField.text!
+            }
             
-            remedio.dataDeValidade = cell.getDataDeValidadeSelected()
-            remedio.preco = cell.precoTextField.text
+            if cellIsOpened[4] == true{
+                let cell = cell4
+                remedio.sintomas = cell.sintomasTextField.text!
+                remedio.contraindicacao = cell.contraindicacaoTextField.text!
+            }
+            Model.instance.allRemedios.append(remedio)
+            Model.instance.savesRemedioData()
         }
-        
-        if cellIsOpened[4] == true{
-            let indexPath: IndexPath = IndexPath(row: 0, section: 4)
-             let cell = cell4
-            
-            remedio.sintomas = cell.sintomasTextField.text
-            remedio.contraindicacao = cell.contraindicacaoTextField.text
-        }
-        Model.instance.allRemedios.append(remedio)
     }
     
     private func callFillDetails(){
-        print("fill all the details at the cell")
+        print("fill the details")
     }
     
     @IBAction func cameraButton(_ sender: Any) {
@@ -149,9 +120,8 @@ class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate
         if indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell", for: indexPath) as! NameTableViewCell
             cell.transform = CGAffineTransform(rotationAngle: (-.pi))
-            
-            photoButton = cell.cameraButton
-            
+            cell.nameTextField.text = nil
+
             cell0 = cell
             return cell
         }
@@ -246,7 +216,7 @@ class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        photoButton.setImage(image, for: .normal)
+        cell0.cameraButton.setImage(image, for: .normal)
         userSettedPhoto = true
         dismiss(animated:true, completion: nil)
     }
@@ -265,41 +235,27 @@ class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate
         return false
     }
     
-//    override func viewDidLoad(){
-//        super.viewDidLoad()
-//        tableView.transform = CGAffineTransform(rotationAngle: (-.pi))
-////        adicionarRemedioButton.delegate = self
-////        adicionarRemedioButton.dataSource = self
-//        cellIsOpened.append(true)
-//        for _ in 0...4{
-//            cellIsOpened.append(false)
-//        }
-////
-////
-////
-////        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
-////        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
-////        tap.cancelsTouchesInView = false
-////        self.view.addGestureRecognizer(tap)
-//    }
-//
-//
-    func setNotifications(remedio: HomeRemedio){
-        
-        self.appDelegate?.scheduleNotification(remedio: remedio)
-        
+    override func viewDidLoad(){
+        super.viewDidLoad()
+        tableView.transform = CGAffineTransform(rotationAngle: (-.pi))
+
+        cellIsOpened.append(true)
+        for _ in 0...4{
+            cellIsOpened.append(false)
+        }
     }
+    
+
+
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
     }
     
     @objc func keyboardWillAppear(notification: NSNotification) {
-        //Do something here
-        
         guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
             return
         }
@@ -311,7 +267,6 @@ class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @objc func keyboardWillDisappear() {
-        //Do something here
         keyboardIsShown = false
         bottomConstraint.constant = 45
         view.layoutIfNeeded()

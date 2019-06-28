@@ -12,30 +12,30 @@ import UIKit
 class Remedio{
     
     internal init() {
-        nome = nil
+        nome = ""
         photo = nil
-        dosagem = nil
-        comprimidos = nil
+        dosagem = ""
+        comprimidos = ""
         horario = nil
         frequencia = nil
-        contraindicacao = nil
+        contraindicacao = ""
         dataDeValidade = nil
-        preco = nil
-        sintomas = nil
-        medida = nil
+        preco = ""
+        sintomas = ""
+        medida = ""
         hasPhoto = false
     }
     
-    var nome : String?
+    var nome : String
     var photo: UIImage?
-    var dosagem: String?
-    var comprimidos: String?
+    var dosagem: String
+    var comprimidos: String
     var horario: Date?
     var frequencia: Date?
-    var contraindicacao: String?
+    var contraindicacao: String
     var dataDeValidade: Date?
-    var preco: String?
-    var sintomas: String?
-    var medida: String?
+    var preco: String
+    var sintomas: String
+    var medida: String
     var hasPhoto: Bool
 }

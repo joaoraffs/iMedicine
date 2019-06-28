@@ -53,6 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
+        
     }
 
 
@@ -78,22 +80,21 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
     
     
-    func scheduleNotification(remedio: HomeRemedio) {
+    func scheduleNotification(remedio: HomeRemedio, notificationDate: Date, iteration: Int) {
         
         
-        let content = UNMutableNotificationContent() // Содержимое уведомления
+        let content = UNMutableNotificationContent()
         let categoryIdentifire = "Delete Notification Type"
         
         content.title = remedio.nome!
-        content.body = "Você configurou para ser lembrada desse remédio"
+        content.body = ("Você configurou para ser lembrada de tomar " +  String(remedio.comprimidos!) + " do remédio!")
         content.sound = UNNotificationSound.default
         content.badge = 1
         content.categoryIdentifier = categoryIdentifire
-        let date = remedio.horario!
-        let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: date)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
-        
-        let identifier = "Local Notification"
+
+        let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: notificationDate)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: false)
+        let identifier = "\(remedio.nome) \(iteration)"
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         
         notificationCenter.add(request) { (error) in
@@ -108,8 +109,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                                               actions: [snoozeAction, deleteAction],
                                               intentIdentifiers: [],
                                               options: [])
-        
         notificationCenter.setNotificationCategories([category])
+//        print(categoryIdentifire + String(iteration))
     }
 }
 
