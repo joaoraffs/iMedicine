@@ -48,9 +48,11 @@ class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate
             return 1;
         }
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 5
     }
+    
     @IBAction func adicionarRemedioButton(_ sender: Any) {
         let remedio: Remedio = Remedio()
         if let nome = cell0.nameTextField.text{
@@ -244,10 +246,6 @@ class AdicionarViewController: UIViewController, UIImagePickerControllerDelegate
             cellIsOpened.append(false)
         }
     }
-    
-
-
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
